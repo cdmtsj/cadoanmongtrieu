@@ -41,14 +41,15 @@ Nhập lễ: Ca Nhập Lễ 2 – Lm. Nguyễn Văn Trinh
 Alleluia: Alleluia
 Dâng lễ: Khúc Tình Hiến Dâng – Phùng Minh Mẫn
 Hiệp lễ: Cảm Mến Ân Tình – Phùng Minh Mẫn
-Kết lễ: Mẹ Là Bóng Mát & Mẹ Về Trời – Phanxicô
+Kết lễ: Mẹ Là Bóng Mát – Phanxicô
 Ghi chú: Có tiệc mừng sau Thánh Lễ, lúc 7:00 PM, tại phòng tập hát.
+Bài hát: nhac/CN20-NamA.pdf
 
 ---
 
 Ngày: 8/16/2026
 Lễ: Chúa Nhật 20 Thường Niên
-Có mặt: 7:30 PM
+Có mặt: 7:30 AM
 Thánh Lễ: 8:00 AM
 Nữ: Áo dài tự do
 Nam: Sơ mi tự do
@@ -57,8 +58,9 @@ Nhập lễ: Ca Nhập Lễ 2 – Lm. Nguyễn Văn Trinh
 Alleluia: Alleluia
 Dâng lễ: Khúc Tình Hiến Dâng – Phùng Minh Mẫn
 Hiệp lễ: Cảm Mến Ân Tình – Phùng Minh Mẫn
-Kết lễ: Mẹ Là Bóng Mát & Mẹ Về Trời – Phanxicô
-Ghi chú: Ca đoàn xin tiền bổn mạng trong Thánh Lễ hôm nay.
+Xin tiền: Mẹ Về Trời – Phanxicô
+Kết lễ: Mẹ Là Bóng Mát – Phanxicô
+Bài hát: nhac/CN20-NamA.pdf
 
 ---
 
@@ -78,6 +80,7 @@ Thánh Lễ: 12:00 PM
 Nữ: Áo dài hồng
 Nam: Sơ mi hồng, tie hồng
 Nhà thờ: St. Maria Goretti
+Địa chỉ: 2890 Senter Rd, San Jose, CA
 
 ---
 
@@ -150,7 +153,7 @@ Nam: Sơ mi tự do
 
     .eyebrow {
       display: block;
-      font-size: .68rem;
+      font-size: .805rem;
       font-weight: 600;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -178,7 +181,7 @@ Nam: Sơ mi tự do
 
     .brand {
       font-family: var(--display);
-      font-size: 1.2rem;
+      font-size: 1.325rem;
       color: var(--nen);
       text-decoration: none;
       white-space: nowrap
@@ -197,7 +200,7 @@ Nam: Sơ mi tự do
     .nav-links a {
       color: #C3CEE4;
       text-decoration: none;
-      font-size: .82rem;
+      font-size: .945rem;
       font-weight: 500;
       border-bottom: 1px solid transparent;
       padding-block: .2rem;
@@ -265,7 +268,7 @@ Nam: Sơ mi tự do
     }
 
     .hero h1 {
-      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-size: clamp(2.725rem, 7vw, 5.325rem);
       letter-spacing: -.02em
     }
 
@@ -289,7 +292,7 @@ Nam: Sơ mi tự do
     }
 
     .hero-meta dt {
-      font-size: .62rem;
+      font-size: .745rem;
       letter-spacing: .17em;
       text-transform: uppercase;
       color: var(--vang);
@@ -298,7 +301,7 @@ Nam: Sơ mi tự do
 
     .hero-meta dd {
       font-family: var(--display);
-      font-size: 1.4rem
+      font-size: 1.525rem
     }
 
     @media(max-width:820px) {
@@ -334,6 +337,10 @@ Nam: Sơ mi tự do
       grid-template-columns: 1.1fr 1fr
     }
 
+    .card+.card {
+      margin-top: clamp(1.5rem, 3vw, 2.2rem)
+    }
+
     @media(max-width:780px) {
       .card {
         grid-template-columns: 1fr
@@ -361,7 +368,7 @@ Nam: Sơ mi tự do
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      font-size: .66rem;
+      font-size: .785rem;
       font-weight: 600;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -383,7 +390,7 @@ Nam: Sơ mi tự do
 
     .date {
       color: var(--xam);
-      font-size: .88rem;
+      font-size: 1.005rem;
       font-weight: 500;
       margin-bottom: 1.5rem
     }
@@ -396,7 +403,7 @@ Nam: Sơ mi tự do
     }
 
     .times dt {
-      font-size: .63rem;
+      font-size: .755rem;
       letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--xam);
@@ -405,19 +412,26 @@ Nam: Sơ mi tự do
 
     .times dd {
       font-family: var(--display);
-      font-size: 1.7rem;
+      font-size: 1.825rem;
       font-weight: 600
     }
 
     .where {
-      font-size: .9rem;
+      font-size: 1.025rem;
       color: #3B4A66;
       padding-top: 1.1rem;
       border-top: 1px solid var(--nen-2)
     }
 
     .attire {
-      margin-top: .8rem
+      margin-top: .8rem;
+      display: flex;
+      gap: .4rem
+    }
+
+    .attire .dp-list {
+      display: flex;
+      flex-direction: column
     }
 
     .attire b,
@@ -428,7 +442,7 @@ Nam: Sơ mi tự do
 
     .ghichu {
       margin-top: .9rem;
-      font-size: .85rem;
+      font-size: .975rem;
       font-style: italic;
       color: var(--xam)
     }
@@ -447,7 +461,7 @@ Nam: Sơ mi tự do
       gap: .7rem;
       padding-block: .5rem;
       border-bottom: 1px solid rgba(13, 23, 48, .09);
-      font-size: .9rem
+      font-size: 1.025rem
     }
 
     .songs li:last-child {
@@ -455,7 +469,7 @@ Nam: Sơ mi tự do
     }
 
     .songs b {
-      font-size: .63rem;
+      font-size: .755rem;
       letter-spacing: .11em;
       text-transform: uppercase;
       color: var(--mua);
@@ -472,13 +486,13 @@ Nam: Sơ mi tự do
       font-style: normal;
       font-weight: 400;
       color: var(--xam);
-      font-size: .82rem
+      font-size: .945rem
     }
 
     .pdf {
       display: inline-block;
       margin-top: 1.2rem;
-      font-size: .72rem;
+      font-size: .845rem;
       font-weight: 600;
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -507,7 +521,7 @@ Nam: Sơ mi tự do
     }
 
     .lich h2 {
-      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      font-size: clamp(2.025rem, 4vw, 3.025rem);
       margin-bottom: 1.8rem
     }
 
@@ -533,7 +547,7 @@ Nam: Sơ mi tự do
 
     .row .d {
       font-family: var(--display);
-      font-size: 1.25rem;
+      font-size: 1.375rem;
       font-weight: 600;
       color: var(--troi)
     }
@@ -541,7 +555,7 @@ Nam: Sơ mi tự do
     .row .d small {
       display: block;
       font-family: var(--body);
-      font-size: .64rem;
+      font-size: .765rem;
       font-weight: 600;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -550,20 +564,20 @@ Nam: Sơ mi tự do
 
     .row .n {
       font-weight: 500;
-      font-size: 1rem
+      font-size: 1.125rem
     }
 
     .row .n em {
       display: block;
       font-style: normal;
       font-weight: 400;
-      font-size: .85rem;
+      font-size: .975rem;
       color: var(--xam);
       margin-top: .15rem
     }
 
     .row .t {
-      font-size: .85rem;
+      font-size: .975rem;
       color: var(--xam);
       white-space: nowrap
     }
@@ -571,7 +585,7 @@ Nam: Sơ mi tự do
     .empty {
       padding-block: 1.8rem;
       color: var(--xam);
-      font-size: .92rem
+      font-size: 1.045rem
     }
 
     /* ── footer ────────────────────────────── */
@@ -579,7 +593,7 @@ Nam: Sơ mi tự do
       background: var(--muc);
       color: #93A3C0;
       padding-block: 3.2rem 2.2rem;
-      font-size: .86rem
+      font-size: .985rem
     }
 
     .foot {
@@ -593,7 +607,7 @@ Nam: Sơ mi tự do
 
     .foot-brand {
       font-family: var(--display);
-      font-size: 1.4rem;
+      font-size: 1.525rem;
       color: var(--nen);
       margin-bottom: .4rem
     }
@@ -628,7 +642,7 @@ Nam: Sơ mi tự do
 
     .copy {
       padding-top: 1.4rem;
-      font-size: .76rem;
+      font-size: .885rem;
       color: #65759A
     }
 
@@ -661,7 +675,7 @@ Nam: Sơ mi tự do
     <div class="wrap nav-in">
       <a class="brand" href="#top">Ca Đoàn <span>Mông Triệu</span></a>
       <ul class="nav-links">
-        <li><a href="#chua-nhat">Chúa Nhật Này</a></li>
+        <li><a href="#chua-nhat">Tuần Này</a></li>
         <li><a href="#lich-trinh">Lịch Trình</a></li>
       </ul>
     </div>
@@ -700,34 +714,7 @@ Nam: Sơ mi tự do
   </header>
 
   <div class="sunday wrap" id="chua-nhat">
-    <div class="card">
-      <div class="card-main">
-        <span class="season"><i></i><span id="mua">Mùa Thường Niên</span></span>
-        <h2 id="f-le">Đang tải…</h2>
-        <p class="date" id="f-ngay">&nbsp;</p>
-        <dl class="times">
-          <div>
-            <dt>Tập hát</dt>
-            <dd id="f-tap">—</dd>
-          </div>
-          <div>
-            <dt>Thánh Lễ</dt>
-            <dd id="f-le-gio">—</dd>
-          </div>
-        </dl>
-        <div class="where">
-          <strong>Giáo Xứ Saint Maria Goretti</strong><br>
-          2890 Senter Rd, San Jose, CA
-          <p class="attire" id="f-dp"></p>
-        </div>
-        <p class="ghichu" id="f-gc" hidden></p>
-      </div>
-      <div class="card-side">
-        <span class="eyebrow">Thánh Ca Chúa Nhật</span>
-        <ul class="songs" id="f-bai"></ul>
-        <a class="pdf" id="f-pdf" href="#" hidden>Bản nhạc (PDF)</a>
-      </div>
-    </div>
+    <div id="f-cards"></div>
   </div>
 
   <section class="lich" id="lich-trinh">
@@ -754,7 +741,7 @@ Nam: Sơ mi tự do
           </address>
         </div>
         <ul class="foot-links">
-          <li><a href="#chua-nhat">Chúa Nhật Này</a></li>
+          <li><a href="#chua-nhat">Tuần Này</a></li>
           <li><a href="#lich-trinh">Lịch Trình</a></li>
         </ul>
       </div>
@@ -766,12 +753,12 @@ Nam: Sơ mi tự do
     const $ = i => document.getElementById(i);
     const THU = ['Chúa Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
     const KEY = {
-      'ngày': 'ngay', 'lễ': 'le', 'tập hát': 'tap', 'thánh lễ': 'gio', 'nữ': 'nu', 'nam': 'nam',
-      'nhập lễ': 'a', 'đáp ca': 'b', 'alleluia': 'c', 'dâng lễ': 'd', 'hiệp lễ': 'e', 'kết lễ': 'f',
-      'ghi chú': 'gc', 'bản nhạc': 'pdf'
+      'ngày': 'ngay', 'lễ': 'le', 'có mặt': 'tap', 'thánh lễ': 'gio', 'nữ': 'nu', 'nam': 'nam',
+      'nhập lễ': 'a', 'đáp ca': 'b', 'alleluia': 'c', 'dâng lễ': 'd', 'hiệp lễ': 'e', 'xin tiền': 'g', 'kết lễ': 'f',
+      'ghi chú': 'gc', 'bài hát': 'pdf', 'nhà thờ': 'nt', 'địa chỉ': 'dc'
     };
     const PHAN = [['a', 'Nhập Lễ'], ['b', 'Đáp Ca'], ['c', 'Alleluia'], ['d', 'Dâng Lễ'],
-    ['e', 'Hiệp Lễ'], ['f', 'Kết Lễ']];
+    ['e', 'Hiệp Lễ'], ['g', 'Xin Tiền'], ['f', 'Kết Lễ']];
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
     function ngay(s) {
@@ -794,39 +781,56 @@ Nam: Sơ mi tự do
       }).filter(o => o._d).sort((a, b) => a._d - b._d);
     }
 
-    function the(e) {
-      $('f-le').textContent = e.le || 'Thánh Lễ Chúa Nhật';
-      $('f-ngay').textContent = dai(e._d);
-      $('f-tap').textContent = e.tap || '—';
-      $('f-le-gio').textContent = e.gio || '—';
-      const dp = []; if (e.nu) dp.push('Nữ: ' + e.nu); if (e.nam) dp.push('Nam: ' + e.nam);
-      $('f-dp').innerHTML = dp.length ? '<b>Đồng phục</b> — ' + esc(dp.join('. ')) + '.' : '';
-      const gc = $('f-gc');
-      if (e.gc) { gc.textContent = e.gc; gc.hidden = false } else gc.hidden = true;
+    function the(e, mua) {
+      const dp = []; if (e.nu) dp.push('Nữ: ' + e.nu + '.'); if (e.nam) dp.push('Nam: ' + e.nam + '.');
+      const dpHtml = dp.length ? `<b>Đồng phục —</b><span class="dp-list">${dp.map(x => `<span>${esc(x)}</span>`).join('')}</span>` : '';
 
-      const ul = $('f-bai'); ul.innerHTML = ''; let co = false;
-      PHAN.forEach(([k, ten]) => {
-        if (!e[k]) return; co = true;
+      let baiHtml = ''; PHAN.forEach(([k, ten]) => {
+        if (!e[k]) return;
         const p = e[k].split(/\s+[–—-]\s+/);
-        const li = document.createElement('li');
-        li.innerHTML = `<b>${ten}</b><span>${esc(p[0])}${p[1] ? `<i>${esc(p[1])}</i>` : ''}</span>`;
-        ul.appendChild(li);
+        baiHtml += `<li><b>${ten}</b><span>${esc(p[0])}${p[1] ? `<i>${esc(p[1])}</i>` : ''}</span></li>`;
       });
-      if (!co) ul.innerHTML = '<li><b>Thánh ca</b><span>Sẽ cập nhật</span></li>';
+      if (!baiHtml) baiHtml = '<li><b>Thánh ca</b><span>Sẽ cập nhật</span></li>';
 
-      const a = $('f-pdf');
-      if (e.pdf) { a.href = e.pdf; a.hidden = false } else a.hidden = true;
+      const card = document.createElement('div'); card.className = 'card';
+      card.innerHTML = `
+      <div class="card-main">
+        <span class="season"><i></i><span>${esc(mua)}</span></span>
+        <h2>${esc(e.le || 'Thánh Lễ Chúa Nhật')}</h2>
+        <p class="date">${esc(dai(e._d))}</p>
+        <dl class="times">
+          <div><dt>Có mặt</dt><dd>${esc(e.tap || '—')}</dd></div>
+          <div><dt>Thánh Lễ</dt><dd>${esc(e.gio || '—')}</dd></div>
+        </dl>
+        <div class="where">
+          <strong>${e.nt ? esc(e.nt) : 'Giáo Xứ Saint Maria Goretti'}</strong><br>
+          ${e.nt ? (e.dc ? esc(e.dc) : '') : '2890 Senter Rd, San Jose, CA'}
+          <p class="attire">${dpHtml}</p>
+        </div>
+        ${e.gc ? `<p class="ghichu">${esc(e.gc)}</p>` : ''}
+      </div>
+      <div class="card-side">
+        <span class="eyebrow">Thánh Ca Chúa Nhật</span>
+        <ul class="songs">${baiHtml}</ul>
+        ${e.pdf ? `<a class="pdf" href="${esc(e.pdf)}">Bài hát (PDF)</a>` : ''}
+      </div>`;
+      return card;
+    }
+
+    function chuNhatCuaTuan(d) {
+      const cn = new Date(d); cn.setDate(cn.getDate() + ((7 - d.getDay()) % 7));
+      return cn.getTime();
     }
 
     function sap(ds) {
       const box = $('f-sap'); box.innerHTML = '';
       if (!ds.length) { box.innerHTML = '<p class="empty">Chưa có lễ nào sắp tới.</p>'; return }
       ds.forEach(e => {
-        const t = [e.tap ? 'Tập hát ' + e.tap : '', e.gio ? 'Lễ ' + e.gio : ''].filter(Boolean).join(' · ');
+        const t = [e.tap ? 'Có mặt ' + e.tap : '', e.gio ? 'Lễ ' + e.gio : ''].filter(Boolean).join(' · ');
         const d = document.createElement('div'); d.className = 'row';
         d.innerHTML = `<div class="d">${String(e._d.getDate()).padStart(2, '0')}/${e._d.getMonth() + 1}
       <small>${THU[e._d.getDay()]}</small></div>
-      <div class="n">${esc(e.le || 'Thánh Lễ')}${e.gc ? `<em>${esc(e.gc)}</em>` : ''}</div>
+      <div class="n">${esc(e.le || 'Thánh Lễ')}${e.nt ? `<em>${esc(e.nt)}${e.dc ? ' — ' + esc(e.dc) : ''}</em>` : ''}${e.gc ? `<em>${esc(e.gc)}</em>` : ''}</div>
       <div class="t">${esc(t)}</div>`;
         box.appendChild(d);
       });
@@ -856,16 +860,25 @@ Nam: Sơ mi tự do
     (function () {
       $('nam').textContent = new Date().getFullYear();
       const [ten, mau, nen] = mua(new Date());
-      $('mua').textContent = ten;
       document.documentElement.style.setProperty('--mua', mau);
       document.documentElement.style.setProperty('--mua-nen', nen);
 
       const tat = doc(), homNay = new Date(); homNay.setHours(0, 0, 0, 0);
       const toi = tat.filter(o => o._d >= homNay);
-      const nay = toi[0] || tat[tat.length - 1];
-      if (nay) the(nay);
-      else { $('f-le').textContent = 'Chưa có lịch'; $('f-ngay').textContent = 'Xin thêm lễ vào đầu file.' }
-      sap(toi.slice(1, 6));
+      const box = $('f-cards'); box.innerHTML = '';
+
+      if (!toi.length) {
+        const trong = tat[tat.length - 1];
+        box.appendChild(trong ? the(trong, ten) : Object.assign(document.createElement('div'), {
+          className: 'card', innerHTML: '<div class="card-main"><h2>Chưa có lịch</h2><p class="date">Xin thêm lễ vào đầu file.</p></div>'
+        }));
+        sap([]);
+      } else {
+        const tuanDau = chuNhatCuaTuan(toi[0]._d);
+        let i = 0;
+        while (i < toi.length && chuNhatCuaTuan(toi[i]._d) === tuanDau) { box.appendChild(the(toi[i], ten)); i++ }
+        sap(toi.slice(i, i + 5));
+      }
 
       const io = new IntersectionObserver(es => es.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
