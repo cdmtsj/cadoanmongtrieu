@@ -514,21 +514,6 @@ Nam: Sơ mi tự do
       color: #fff
     }
 
-    .pdf-status {
-      display: block;
-      margin-top: .5rem;
-      font-size: .82rem;
-      color: var(--xam)
-    }
-
-    .pdf-status.ok {
-      color: var(--mua)
-    }
-
-    .pdf-status.err {
-      color: #A3402E
-    }
-
     .pdf[hidden] {
       display: none
     }
@@ -809,12 +794,14 @@ Nam: Sơ mi tự do
       const dp = []; if (e.nu) dp.push('Nữ: ' + e.nu + '.'); if (e.nam) dp.push('Nam: ' + e.nam + '.');
       const dpHtml = dp.length ? `<b>Đồng phục —</b><span class="dp-list">${dp.map(x => `<span>${esc(x)}</span>`).join('')}</span>` : '';
 
+      const f = tenPDF(e);
+
       let baiHtml = ''; PHAN.forEach(([k, ten]) => {
         if (!e[k]) return;
         const p = e[k].split(/\s+[–—-]\s+/);
         baiHtml += `<li><b>${ten}</b><span>${esc(p[0])}${p[1] ? `<i>${esc(p[1])}</i>` : ''}</span></li>`;
       });
-      if (!baiHtml) baiHtml = '<li><b>Thánh ca</b><span>Sẽ cập nhật</span></li>';
+      if (!baiHtml && !f) baiHtml = '<li><b>Thánh ca</b><span>Sẽ cập nhật</span></li>';
 
       const card = document.createElement('div'); card.className = 'card';
       card.innerHTML = `
@@ -836,8 +823,7 @@ Nam: Sơ mi tự do
       <div class="card-side">
         <span class="eyebrow">Thánh Ca Chúa Nhật</span>
         <ul class="songs">${baiHtml}</ul>
-        ${(() => { const f = tenPDF(e); return f ? `<a class="pdf" href="${esc(f)}" data-pdf="${esc(f)}">Bài hát (PDF)</a>
-        <small class="pdf-status" data-pdf="${esc(f)}">Đang kiểm tra…</small>` : ''; })()}
+        ${f ? `<a class="pdf" href="${esc(f)}" data-pdf="${esc(f)}">Bài hát (PDF)</a>` : ''}
       </div>`;
       return card;
     }
@@ -857,25 +843,6 @@ Nam: Sơ mi tự do
       const res = await fetch(url);
       if (res.ok) await c.put(url, res.clone());
       return res;
-    }
-
-    async function capNhatTrangThaiPdf() {
-      if (!('caches' in window)) return;
-      const c = await caches.open(CACHE_NHAC);
-      document.querySelectorAll('.pdf-status').forEach(async el => {
-        const url = el.dataset.pdf;
-        const co = await c.match(url);
-        if (co) { el.textContent = '✓ Đã lưu, xem được không cần mạng'; el.className = 'pdf-status ok'; return }
-        el.textContent = 'Đang lưu để xem không cần mạng…';
-        try {
-          const res = await fetch(url);
-          if (!res.ok) throw 0;
-          await c.put(url, res.clone());
-          el.textContent = '✓ Đã lưu, xem được không cần mạng'; el.className = 'pdf-status ok';
-        } catch {
-          el.textContent = 'Chưa lưu — cần Internet để tải lần đầu'; el.className = 'pdf-status err';
-        }
-      });
     }
 
     document.addEventListener('click', e => {
@@ -992,10 +959,7 @@ Nam: Sơ mi tự do
       }
 
       if ('caches' in window) {
-        const hienThi = new Set([...box.querySelectorAll('.pdf-status')].map(el => el.dataset.pdf));
-        const conLai = [...new Set(tat.map(o => o.pdf).filter(Boolean))].filter(u => !hienThi.has(u));
-        conLai.forEach(u => luuBaiHat(u).catch(() => { }));
-        capNhatTrangThaiPdf();
+        [...new Set(tat.map(o => tenPDF(o)).filter(Boolean))].forEach(u => luuBaiHat(u).catch(() => { }));
       }
 
       const io = new IntersectionObserver(es => es.forEach(e => {
