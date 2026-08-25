@@ -1,8 +1,12 @@
-const CACHE = 'cadoan-v5';
+const CACHE = 'cadoan-v6';
 const CORE = ['./', './index.html'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
+  e.waitUntil(
+    caches.open(CACHE).then(c => Promise.all(
+      CORE.map(url => fetch(url, { cache: 'reload' }).then(res => c.put(url, res)))
+    ))
+  );
   self.skipWaiting();
 });
 
@@ -33,7 +37,7 @@ self.addEventListener('fetch', e => {
     // Page/data can change weekly: prefer the network so the schedule stays
     // fresh, but fall back to the last cached copy when offline.
     e.respondWith(
-      fetch(e.request).then(res => {
+      fetch(e.request, { cache: 'no-store' }).then(res => {
         if (res && res.ok) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
         return res;
       }).catch(() => caches.match(e.request))
