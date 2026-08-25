@@ -608,6 +608,10 @@ Nam: Sơ mi tự do
       font-size: 1.045rem
     }
 
+    .row.tam {
+      opacity: .55
+    }
+
     /* ── footer ────────────────────────────── */
     footer {
       background: var(--muc);
@@ -892,13 +896,25 @@ Nam: Sơ mi tự do
       if (!ds.length) { box.innerHTML = '<p class="empty">Chưa có lễ nào sắp tới.</p>'; return }
       ds.forEach(e => {
         const t = [e.tap ? 'Có mặt ' + e.tap : '', e.gio ? 'Lễ ' + e.gio : ''].filter(Boolean).join(' · ');
-        const d = document.createElement('div'); d.className = 'row';
+        const d = document.createElement('div'); d.className = 'row' + (e.tam ? ' tam' : '');
         d.innerHTML = `<div class="d">${String(e._d.getDate()).padStart(2, '0')}/${e._d.getMonth() + 1}
       <small>${THU[e._d.getDay()]}</small></div>
       <div class="n">${esc(e.le || 'Thánh Lễ')}${e.nt ? `<em>${esc(e.nt)}${e.dc ? ' — ' + esc(e.dc) : ''}</em>` : ''}${e.gc ? `<em>${esc(e.gc)}</em>` : ''}</div>
       <div class="t">${esc(t)}</div>`;
         box.appendChild(d);
       });
+    }
+
+    /* "Các lễ sắp tới" hiển thị luôn 5 lễ. Nếu file chưa liệt kê đủ,
+       tự thêm các Chúa Nhật kế tiếp (cách nhau 7 ngày) làm chỗ trống. */
+    function du5Le(ds, tuNgay) {
+      const ket = ds.slice();
+      let ngay = ket.length ? ket[ket.length - 1]._d : tuNgay;
+      while (ket.length < 5) {
+        ngay = new Date(ngay.getTime() + 7 * 86400000);
+        ket.push({ _d: ngay, le: 'Thánh Lễ Chúa Nhật', gc: 'Chi tiết sẽ cập nhật sau', tam: true });
+      }
+      return ket;
     }
 
     /* mùa phụng vụ → màu */
@@ -967,12 +983,12 @@ Nam: Sơ mi tự do
         box.appendChild(trong ? the(trong, ten) : Object.assign(document.createElement('div'), {
           className: 'card', innerHTML: '<div class="card-main"><h2>Chưa có lịch</h2><p class="date">Xin thêm lễ vào đầu file.</p></div>'
         }));
-        sap([]);
+        sap(du5Le([], bayGio));
       } else {
         const tuanDau = chuNhatCuaTuan(toi[0]._d);
         let i = 0;
         while (i < toi.length && chuNhatCuaTuan(toi[i]._d) === tuanDau) { box.appendChild(the(toi[i], ten)); i++ }
-        sap(toi.slice(i, i + 5));
+        sap(du5Le(toi.slice(i, i + 5), toi[toi.length - 1]._d));
       }
 
       if ('caches' in window) {
