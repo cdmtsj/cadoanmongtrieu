@@ -800,6 +800,13 @@ Kết lễ: Trong An Bình – Lm. Nguyễn Duy
       }).filter(o => o._d).sort((a, b) => a._d - b._d);
     }
 
+    /* Đám cưới và Đám tang có màu cố định riêng, không theo mùa phụng vụ. */
+    function mauLe(le) {
+      if (/đám\s*cưới/i.test(le || '')) return ['#B5406B', '#F7E4EC'];
+      if (/đám\s*tang/i.test(le || '')) return ['#5B3E7E', '#EDE7F3'];
+      return null;
+    }
+
     function the(e, mua) {
       const dp = []; if (e.nu) dp.push('Nữ: ' + e.nu + '.'); if (e.nam) dp.push('Nam: ' + e.nam + '.');
       const dpHtml = dp.length ? `<b>Đồng phục —</b><span class="dp-list">${dp.map(x => `<span>${esc(x)}</span>`).join('')}</span>` : '';
@@ -813,7 +820,9 @@ Kết lễ: Trong An Bình – Lm. Nguyễn Duy
       });
       if (!baiHtml && !f) baiHtml = '<li><b>Thánh ca</b><span>Sẽ cập nhật</span></li>';
 
+      const mauRieng = mauLe(e.le);
       const card = document.createElement('div'); card.className = 'card';
+      if (mauRieng) card.style.cssText = `--mua:${mauRieng[0]};--mua-nen:${mauRieng[1]}`;
       card.innerHTML = `
       <div class="card-main">
         <span class="season"><i></i><span>${esc(mua)}</span></span>
