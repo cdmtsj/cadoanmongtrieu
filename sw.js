@@ -1,4 +1,4 @@
-const CACHE = 'cadoan-v6';
+const CACHE = 'cadoan-v7';
 const CORE = ['./', './index.html'];
 
 self.addEventListener('install', e => {
