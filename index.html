@@ -118,9 +118,9 @@ Ngày: 11/8/2026
 Lễ: Chúa Nhật 32 Thường Niên
 Có mặt: 7:30 AM
 Thánh Lễ: 8:00 AM
-Nữ: Áo dài tím
-Nam: Sơ mi tím
-Ghi chú: Tháng 11 là tháng cầu cho các linh hồn. Ca đoàn mặc màu tím, màu của sự cầu nguyện và hiệp thông với các linh hồn.
+Nữ: Áo dài tím tự do hoặc màu tối
+Nam: Sơ mi tím tự do hoặc màu tối
+Ghi chú: Tháng 11 là tháng cầu cho các linh hồn. Xin anh chị em mặc màu tím tự do, hoặc màu tối phù hợp, để cùng hiệp thông cầu nguyện.
 Nhập lễ: Con Hân Hoan – Lm. Kim Long
 Đáp ca: Thánh Vịnh 62-B – Thanh Lâm
 Dâng lễ: Dâng 1 (Nguyện Dâng Chúa) – Lm. Nguyễn Duy
@@ -914,7 +914,11 @@ Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
       ngay.setHours(0, 0, 0, 0);
       while (ket.length < 5) {
         ngay.setDate(ngay.getDate() + ((7 - ngay.getDay()) % 7 || 7));
-        ket.push({ _d: new Date(ngay), le: 'Thánh Lễ Chúa Nhật', gc: 'Chi tiết sẽ cập nhật sau', tam: true });
+        /* Tháng 11 (cầu cho các linh hồn): đồng phục màu tím tự do hoặc màu tối. */
+        const gc = ngay.getMonth() === 10
+          ? 'Đồng phục: màu tím tự do hoặc màu tối phù hợp (tháng cầu cho các linh hồn). Chi tiết khác sẽ cập nhật sau.'
+          : 'Chi tiết sẽ cập nhật sau';
+        ket.push({ _d: new Date(ngay), le: 'Thánh Lễ Chúa Nhật', gc, tam: true });
       }
       return ket;
     }
