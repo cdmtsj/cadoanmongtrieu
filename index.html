@@ -895,10 +895,11 @@ Kết lễ: Trong An Bình – Lm. Nguyễn Duy
        tự thêm các Chúa Nhật kế tiếp (cách nhau 7 ngày) làm chỗ trống. */
     function du5Le(ds, tuNgay) {
       const ket = ds.slice();
-      let ngay = ket.length ? ket[ket.length - 1]._d : tuNgay;
+      let ngay = new Date(ket.length ? ket[ket.length - 1]._d : tuNgay.getTime() - 86400000);
+      ngay.setHours(0, 0, 0, 0);
       while (ket.length < 5) {
-        ngay = new Date(ngay.getTime() + 7 * 86400000);
-        ket.push({ _d: ngay, le: 'Thánh Lễ Chúa Nhật', gc: 'Chi tiết sẽ cập nhật sau', tam: true });
+        ngay.setDate(ngay.getDate() + ((7 - ngay.getDay()) % 7 || 7));
+        ket.push({ _d: new Date(ngay), le: 'Thánh Lễ Chúa Nhật', gc: 'Chi tiết sẽ cập nhật sau', tam: true });
       }
       return ket;
     }
