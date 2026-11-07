@@ -112,6 +112,18 @@ Dâng lễ: Con Xin Tiến Dâng – Lm. Kim Long
 Hiệp lễ: Theo Chúa – Lm. Thành Tâm
 Kết lễ: Trong An Bình – Lm. Nguyễn Duy
 
+---
+
+Ngày: 11/8/2026
+Lễ: Chúa Nhật 32 Thường Niên
+Có mặt: 7:30 AM
+Thánh Lễ: 8:00 AM
+Nhập lễ: Con Hân Hoan – Lm. Kim Long
+Đáp ca: Thánh Vịnh 62-B – Thanh Lâm
+Dâng lễ: Dâng 1 (Nguyện Dâng Chúa) – Lm. Nguyễn Duy
+Hiệp lễ: Mười Cô Trinh Nữ – Lm. Mi Trầm
+Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
+
 </script>
 
   <style>
@@ -895,7 +907,7 @@ Kết lễ: Trong An Bình – Lm. Nguyễn Duy
        tự thêm các Chúa Nhật kế tiếp (cách nhau 7 ngày) làm chỗ trống. */
     function du5Le(ds, tuNgay) {
       const ket = ds.slice();
-      let ngay = new Date(ket.length ? ket[ket.length - 1]._d : tuNgay.getTime() - 86400000);
+      let ngay = new Date(ket.length ? ket[ket.length - 1]._d : tuNgay);
       ngay.setHours(0, 0, 0, 0);
       while (ket.length < 5) {
         ngay.setDate(ngay.getDate() + ((7 - ngay.getDay()) % 7 || 7));
@@ -970,7 +982,7 @@ Kết lễ: Trong An Bình – Lm. Nguyễn Duy
         box.appendChild(trong ? the(trong, ten) : Object.assign(document.createElement('div'), {
           className: 'card', innerHTML: '<div class="card-main"><h2>Chưa có lịch</h2><p class="date">Xin thêm lễ vào đầu file.</p></div>'
         }));
-        sap(du5Le([], bayGio));
+        sap(du5Le([], new Date(bayGio.getTime() - 86400000)));
       } else {
         const tuanDau = chuNhatCuaTuan(toi[0]._d);
         let i = 0;
