@@ -771,6 +771,45 @@ Kem: #EFE3C8
       color: var(--troi)
     }
 
+    .chon {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-bottom: 1.6rem
+    }
+
+    .ct {
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--troi);
+      background: #fff;
+      border: 1.5px solid var(--troi);
+      padding: .9rem 1.8rem;
+      cursor: pointer;
+      transition: .2s
+    }
+
+    .ct:hover,
+    .ct:focus-visible {
+      background: var(--nen-2)
+    }
+
+    .ct[aria-pressed=true] {
+      background: var(--troi);
+      color: #fff
+    }
+
+    .ct[aria-pressed=true]::before {
+      content: "✓ "
+    }
+
+    .dv[hidden] {
+      display: none
+    }
+
     .dv {
       background: #fff;
       border: 1px solid #DCD3BF;
@@ -1168,17 +1207,23 @@ Kem: #EFE3C8
 
   <section class="sec" id="dich-vu">
     <div class="wrap rise">
-      <span class="eyebrow">Dịch Vụ</span>
-      <h2>Hát Lễ Cưới &amp; Lễ Tang</h2>
-      <p class="lead">Ca đoàn nhận hát trong Thánh Lễ cưới và Thánh Lễ an táng. Xin chọn mục bên dưới để chuẩn bị thông tin gửi cho ca đoàn.</p>
+      <span class="eyebrow">Dịch Vụ Hát Lễ</span>
+      <h2>Ca Đoàn Hát Lễ</h2>
+      <p class="lead">Ca đoàn nhận hát trong Thánh Lễ cưới và Thánh Lễ an táng. Xin chọn loại lễ bạn cần (có thể chọn cả hai) để chuẩn bị thông tin gửi cho ca đoàn.</p>
 
-      <div class="dv" id="dv-cuoi">
+      <div class="chon" role="group" aria-label="Chọn loại lễ">
+        <button type="button" class="ct" data-dv="dv-cuoi" aria-pressed="false">Lễ Cưới</button>
+        <button type="button" class="ct" data-dv="dv-tang" aria-pressed="false">Lễ Tang</button>
+      </div>
+      <p class="empty" id="dv-goiy">Xin chọn Lễ Cưới, Lễ Tang, hoặc cả hai ở trên.</p>
+
+      <div class="dv" id="dv-cuoi" hidden>
         <h3>Hát Lễ Cưới</h3>
         <p class="lead">Chọn màu đồng phục và các bài hát. Ca đoàn đã có sẵn bộ bài mặc định, bạn có thể giữ nguyên hoặc đổi tuỳ ý. Chọn xong, bấm sao chép và gửi nội dung cho ca đoàn.</p>
         <div id="f-cuoi"></div>
       </div>
 
-      <div class="dv" id="dv-tang">
+      <div class="dv" id="dv-tang" hidden>
         <h3>Hát Lễ Tang</h3>
         <p class="lead">Ca đoàn xin chân thành chia buồn cùng tang quyến. Ca đoàn nhận hát trong Thánh Lễ an táng. Quý gia đình có thể điền các thông tin dưới đây (không bắt buộc), rồi sao chép và gửi cho ca đoàn.</p>
         <div id="f-tang"></div>
@@ -1631,6 +1676,15 @@ Kem: #EFE3C8
         ],
         mau: [], phan: dv.tang.phan, lienLac: dv.lienLac
       });
+
+      /* Chọn Lễ Cưới / Lễ Tang: bấm nút nào hiện phần đó, chọn cả hai thì hiện cả hai */
+      document.querySelectorAll('.ct').forEach(b => b.addEventListener('click', () => {
+        const bat = b.getAttribute('aria-pressed') !== 'true';
+        b.setAttribute('aria-pressed', bat);
+        $(b.dataset.dv).hidden = !bat;
+        $('dv-goiy').hidden = !!document.querySelector('.ct[aria-pressed=true]');
+        if (bat) $(b.dataset.dv).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }));
 
       /* Quỹ hàng quý: chỉ thông tin chung, quý hiện tại tự tính */
       (function () {
