@@ -919,11 +919,11 @@ Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
         const t11 = ngay.getMonth() === 10;
         const cn34 = t11 && ngay.getDate() >= 20 && ngay.getDate() <= 26;
         const gc = cn34
-          ? 'Đồng phục: màu đỏ. Chi tiết khác sẽ cập nhật sau.'
+          ? 'Đồng phục: màu đỏ (Lễ Chúa Kitô Vua). Chi tiết khác sẽ cập nhật sau.'
           : t11
             ? 'Đồng phục: màu tím tự do hoặc màu tối phù hợp (tháng cầu cho các linh hồn). Chi tiết khác sẽ cập nhật sau.'
             : 'Chi tiết sẽ cập nhật sau';
-        ket.push({ _d: new Date(ngay), le: 'Thánh Lễ Chúa Nhật', gc, tam: true });
+        ket.push({ _d: new Date(ngay), le: cn34 ? 'Chúa Nhật 34 Thường Niên — Lễ Chúa Kitô Vua' : 'Thánh Lễ Chúa Nhật', gc, tam: true });
       }
       return ket;
     }
