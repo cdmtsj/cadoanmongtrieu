@@ -914,10 +914,15 @@ Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
       ngay.setHours(0, 0, 0, 0);
       while (ket.length < 5) {
         ngay.setDate(ngay.getDate() + ((7 - ngay.getDay()) % 7 || 7));
-        /* Tháng 11 (cầu cho các linh hồn): đồng phục màu tím tự do hoặc màu tối. */
-        const gc = ngay.getMonth() === 10
-          ? 'Đồng phục: màu tím tự do hoặc màu tối phù hợp (tháng cầu cho các linh hồn). Chi tiết khác sẽ cập nhật sau.'
-          : 'Chi tiết sẽ cập nhật sau';
+        /* Tháng 11 (cầu cho các linh hồn): đồng phục màu tím tự do hoặc màu tối.
+           Riêng Chúa Nhật 34 (Chúa Kitô Vua, luôn rơi vào 20–26/11): màu đỏ. */
+        const t11 = ngay.getMonth() === 10;
+        const cn34 = t11 && ngay.getDate() >= 20 && ngay.getDate() <= 26;
+        const gc = cn34
+          ? 'Đồng phục: màu đỏ. Chi tiết khác sẽ cập nhật sau.'
+          : t11
+            ? 'Đồng phục: màu tím tự do hoặc màu tối phù hợp (tháng cầu cho các linh hồn). Chi tiết khác sẽ cập nhật sau.'
+            : 'Chi tiết sẽ cập nhật sau';
         ket.push({ _d: new Date(ngay), le: 'Thánh Lễ Chúa Nhật', gc, tam: true });
       }
       return ket;
