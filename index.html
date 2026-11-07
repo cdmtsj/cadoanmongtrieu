@@ -149,6 +149,8 @@ Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
        Bài ĐẦU TIÊN của mỗi phần là bài MẶC ĐỊNH. Muốn thêm lựa chọn khác
        cho cùng một phần thì viết thêm một dòng cùng tên phần.
        Phần "## Tang" để trống thì web chỉ hiện biểu mẫu thông tin.
+     • Dòng  Bài hát: tên-file.pdf  (file nằm trong thư mục nhac/) sẽ hiện
+       nút "Bài hát (PDF)" giống như ở các Chúa Nhật. Dùng được cho cả Cưới và Tang.
      • "## Màu cưới": mỗi dòng là một màu.  Tên màu: #mãmàu
        Có ảnh thật thì thêm  | ảnh  rồi bỏ file vào thư mục anh/ với tên
        dong-phuc-ten-mau-khong-dau.jpg  (ví dụ: dong-phuc-hong.jpg).
@@ -166,6 +168,7 @@ Hiệp lễ: Nguyện Cầu Cho Nhau – Phanxicô
 Dâng hoa Đức Mẹ: Tình Hồng Dâng Mẹ – Văn Chi
 Tạ ơn cha mẹ: Tình Cha Nghĩa Mẹ – Lm. Nguyễn Duy
 Kết lễ: Diễm Tình Ca 3 – Lm. Thành Tâm
+Bài hát: BaiHatDamCuoi_Standard.pdf
 
 ## Màu cưới
 Hồng: #E48FB0
@@ -977,6 +980,14 @@ Kem: #EFE3C8
       vertical-align: middle
     }
 
+    .pdf-dv {
+      margin-bottom: 1.2rem
+    }
+
+    .pdf-dv .pdf {
+      margin-top: 0
+    }
+
     .tt {
       margin-top: 2rem;
       padding-top: 1.6rem;
@@ -1569,6 +1580,7 @@ Kem: #EFE3C8
             return;
           }
           const nhom = che === 'cưới' ? r.cuoi : che === 'tang' ? r.tang : null; if (!nhom) return;
+          if (k.toLowerCase() === 'bài hát') { nhom.pdf = /^https?:\/\//i.test(v) ? v : 'nhac/' + v; return }
           const [ten, tg] = v.split(/\s+[–—-]\s+/);
           let p = nhom.phan.find(x => x.ten.toLowerCase() === k.toLowerCase());
           if (!p) nhom.phan.push(p = { ten: k, bai: [] });
@@ -1585,7 +1597,8 @@ Kem: #EFE3C8
           <div class="pv" data-pv></div>
           <div class="sw" role="group" aria-label="Chọn màu đồng phục">${cf.mau.map((m, i) => `<button type="button" data-m="${i}" style="background:${m.hex}" aria-label="${esc(m.ten)}" title="${esc(m.ten)}" aria-pressed="${i === 0}"></button>`).join('')}</div>
           <p class="mau-ten" data-mt></p>` : '';
-        const phanHtml = cf.phan.length ? `<h4>Chọn bài hát</h4>` + cf.phan.map((p, i) => `<fieldset class="ph"><legend>${esc(p.ten)}</legend>${p.bai.map((b, j) => `<label class="opt"><input type="radio" name="${id}-p${i}" value="${j}"${j === 0 ? ' checked' : ''}><span>${esc(b.ten)}${j === 0 ? '<b class="md">Mặc định</b>' : ''}${b.tg ? `<i>${esc(b.tg)}</i>` : ''}</span></label>`).join('')}<label class="opt"><input type="radio" name="${id}-p${i}" value="x"><span>Bài khác: <input type="text" class="khac" placeholder="Tên bài hát" aria-label="Bài khác cho ${esc(p.ten)}"></span></label></fieldset>`).join('') : '';
+        const pdfHtml = cf.pdf ? `<p class="pdf-dv"><a class="pdf" href="${esc(cf.pdf)}" data-pdf="${esc(cf.pdf)}">Bài hát (PDF)</a></p>` : '';
+        const phanHtml = (cf.phan.length || cf.pdf) ? `<h4>${cf.phan.length ? 'Chọn bài hát' : 'Bài hát'}</h4>` + pdfHtml + cf.phan.map((p, i) => `<fieldset class="ph"><legend>${esc(p.ten)}</legend>${p.bai.map((b, j) => `<label class="opt"><input type="radio" name="${id}-p${i}" value="${j}"${j === 0 ? ' checked' : ''}><span>${esc(b.ten)}${j === 0 ? '<b class="md">Mặc định</b>' : ''}${b.tg ? `<i>${esc(b.tg)}</i>` : ''}</span></label>`).join('')}<label class="opt"><input type="radio" name="${id}-p${i}" value="x"><span>Bài khác: <input type="text" class="khac" placeholder="Tên bài hát" aria-label="Bài khác cho ${esc(p.ten)}"></span></label></fieldset>`).join('') : '';
         const cot2 = (mauHtml || phanHtml)
           ? `<div class="dv-grid"><div><h4>Thông tin</h4>${truong}${mauHtml}</div><div>${phanHtml}</div></div>`
           : `<h4>Thông tin</h4>${truong}`;
@@ -1664,7 +1677,7 @@ Kem: #EFE3C8
           { nhan: 'Nhà thờ / địa điểm' },
           { nhan: 'Người liên lạc & số điện thoại' }
         ],
-        mau: dv.mau, phan: dv.cuoi.phan, lienLac: dv.lienLac
+        mau: dv.mau, phan: dv.cuoi.phan, pdf: dv.cuoi.pdf, lienLac: dv.lienLac
       });
       taoForm($('f-tang'), {
         id: 'tang', tieuTT: 'YÊU CẦU HÁT LỄ TANG — Ca Đoàn Mông Triệu',
@@ -1674,8 +1687,11 @@ Kem: #EFE3C8
           { nhan: 'Nhà thờ / địa điểm' },
           { nhan: 'Người liên lạc & số điện thoại' }
         ],
-        mau: [], phan: dv.tang.phan, lienLac: dv.lienLac
+        mau: [], phan: dv.tang.phan, pdf: dv.tang.pdf, lienLac: dv.lienLac
       });
+
+      /* Lưu sẵn file bài hát của dịch vụ để xem được không cần mạng */
+      if ('caches' in window) [dv.cuoi.pdf, dv.tang.pdf].filter(u => u && !/^https?:/i.test(u)).forEach(u => luuBaiHat(u).catch(() => { }));
 
       /* Chọn Lễ Cưới / Lễ Tang: bấm nút nào hiện phần đó, chọn cả hai thì hiện cả hai */
       document.querySelectorAll('.ct').forEach(b => b.addEventListener('click', () => {
