@@ -129,18 +129,6 @@ Kết lễ: Từ Chốn Luyện Hình – Lm. Kim Long
 </script>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-     THÔNG BÁO — viết thêm một khối mới, các khối cách nhau bằng ---
-
-     Tiêu đề: ...        (bắt buộc)
-     Nội dung: ...       (có thể viết nhiều dòng; link http… tự bấm được)
-     Ngày: 11/8/2026     (ngày đăng, tuỳ chọn)
-     Hết hạn: 11/15/2026 (tới ngày này thông báo tự biến mất, tuỳ chọn)
-     ═══════════════════════════════════════════════════════════════════ -->
-  <script type="text/plain" id="du-lieu-thong-bao">
-
-</script>
-
-  <!-- ═══════════════════════════════════════════════════════════════════
      DỊCH VỤ — HÁT LỄ CƯỚI / LỄ TANG
 
      • Liên lạc: chữ này hiện dưới nút "Sao chép nội dung" (số điện thoại,
@@ -180,22 +168,6 @@ Vàng: #D9B13B
 Kem: #EFE3C8
 
 ## Tang
-
-</script>
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-     QUỸ HÀNG QUÝ — chỉ ghi thông tin CHUNG (mức đóng, hạn, cách đóng).
-     ĐỪNG ghi tên hay số tiền của từng người: trang web này công khai.
-     Dòng nào để trống thì không hiện.
-
-     Mức đóng: ...
-     Hạn đóng: ...
-     Cách đóng: ...
-     Thủ quỹ: ...
-     Tổng quỹ: ...
-     Ghi chú: ...
-     ═══════════════════════════════════════════════════════════════════ -->
-  <script type="text/plain" id="du-lieu-quy">
 
 </script>
 
@@ -703,7 +675,7 @@ Kem: #EFE3C8
       opacity: .55
     }
 
-    /* ── thông báo · dịch vụ · quỹ ─────────── */
+    /* ── dịch vụ hát lễ ─────────────────────── */
     .lich,
     .sec {
       scroll-margin-top: 4.5rem
@@ -721,10 +693,6 @@ Kem: #EFE3C8
       padding-block: clamp(3.5rem, 7vw, 5.5rem)
     }
 
-    .sec.alt {
-      background: var(--nen-2)
-    }
-
     .sec h2 {
       font-size: clamp(2.025rem, 4vw, 3.025rem);
       margin-bottom: 1rem
@@ -737,40 +705,7 @@ Kem: #EFE3C8
       font-size: 1.05rem
     }
 
-    #thong-bao {
-      margin-top: clamp(4rem, 8vw, 6.5rem)
-    }
-
-    #thong-bao+.lich {
-      margin-top: 0
-    }
-
-    .tb {
-      background: #fff;
-      border: 1px solid #DCD3BF;
-      border-left: 6px solid var(--vang);
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1rem
-    }
-
-    .tb h3 {
-      font-size: 1.5rem;
-      margin-bottom: .2rem
-    }
-
-    .tb time {
-      display: block;
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--xam);
-      margin-bottom: .7rem
-    }
-
-    .tb a,
-    .lh a,
-    .qdl a {
+    .lh a {
       color: var(--troi)
     }
 
@@ -1031,39 +966,6 @@ Kem: #EFE3C8
       color: var(--xam)
     }
 
-    .qdl {
-      display: grid;
-      grid-template-columns: minmax(8rem, 12rem) 1fr;
-      gap: .9rem 1.5rem;
-      background: #fff;
-      border: 1px solid #DCD3BF;
-      padding: 1.6rem
-    }
-
-    .qdl dt {
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--xam);
-      padding-top: .25rem
-    }
-
-    .qdl dd {
-      font-size: 1.1rem
-    }
-
-    @media(max-width:560px) {
-      .qdl {
-        grid-template-columns: 1fr;
-        gap: .2rem
-      }
-
-      .qdl dd {
-        margin-bottom: .8rem
-      }
-    }
-
     /* ── footer ────────────────────────────── */
     footer {
       background: var(--muc);
@@ -1152,10 +1054,8 @@ Kem: #EFE3C8
       <a class="brand" href="#top">Ca Đoàn <span>Mông Triệu</span></a>
       <ul class="nav-links">
         <li><a href="#chua-nhat">Tuần Này</a></li>
-        <li><a href="#thong-bao">Thông Báo</a></li>
         <li><a href="#lich-trinh">Lịch Trình</a></li>
         <li><a href="#dich-vu">Dịch Vụ</a></li>
-        <li><a href="#quy">Quỹ</a></li>
       </ul>
     </div>
   </nav>
@@ -1196,16 +1096,6 @@ Kem: #EFE3C8
     <div id="f-cards"></div>
   </div>
 
-  <section class="sec" id="thong-bao">
-    <div class="wrap rise">
-      <span class="eyebrow">Thông Báo</span>
-      <h2>Từ Ca Đoàn</h2>
-      <div id="f-thongbao">
-        <p class="empty">Đang tải…</p>
-      </div>
-    </div>
-  </section>
-
   <section class="lich" id="lich-trinh">
     <div class="wrap rise">
       <span class="eyebrow">Lịch Trình</span>
@@ -1242,14 +1132,6 @@ Kem: #EFE3C8
     </div>
   </section>
 
-  <section class="sec alt" id="quy">
-    <div class="wrap rise">
-      <span class="eyebrow">Quỹ Ca Đoàn</span>
-      <h2>Quỹ Hàng Quý</h2>
-      <div id="f-quy"></div>
-    </div>
-  </section>
-
   <footer>
     <div class="wrap">
       <div class="foot">
@@ -1264,10 +1146,8 @@ Kem: #EFE3C8
         </div>
         <ul class="foot-links">
           <li><a href="#chua-nhat">Tuần Này</a></li>
-          <li><a href="#thong-bao">Thông Báo</a></li>
           <li><a href="#lich-trinh">Lịch Trình</a></li>
           <li><a href="#dich-vu">Dịch Vụ</a></li>
-          <li><a href="#quy">Quỹ</a></li>
         </ul>
       </div>
       <div class="copy">© Ca Đoàn Mông Triệu <span id="nam"></span> · Giáo Xứ Saint Maria Goretti, San Jose, CA</div>
@@ -1502,34 +1382,12 @@ Kem: #EFE3C8
       document.querySelectorAll('.rise').forEach(el => io.observe(el));
     })();
 
-    /* ── thông báo · dịch vụ · quỹ ──────────────── */
+    /* ── dịch vụ hát lễ ─────────────────────────── */
     (function () {
-      const chia = id => $(id).textContent.split(/^\s*---+\s*$/m);
       const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/gi, 'd').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const lk = s => esc(s).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
       const toi = (hex, f) => '#' + [1, 3, 5].map(i => Math.round(parseInt(hex.substr(i, 2), 16) * (1 - f)).toString(16).padStart(2, '0')).join('');
       const hopLe = h => /^#[0-9a-f]{6}$/i.test(h || '');
-      const homNay = new Date(); homNay.setHours(0, 0, 0, 0);
-
-      /* Thông báo: tự ẩn khi qua ngày "Hết hạn" */
-      (function () {
-        const K = { 'tiêu đề': 't', 'nội dung': 'n', 'ngày': 'd', 'hết hạn': 'h' };
-        const ds = chia('du-lieu-thong-bao').map(kh => {
-          const o = {}; let cur = null;
-          kh.split('\n').forEach(dg => {
-            const m = dg.match(/^\s*([^:]{1,20}):\s*(.*)$/);
-            const k = m && K[m[1].trim().toLowerCase()];
-            if (k) { o[k] = m[2].trim(); cur = k }
-            else if (cur && dg.trim()) o[cur] += '\n' + dg.trim();
-          });
-          o._d = ngay(o.d); o._h = ngay(o.h);
-          return o;
-        }).filter(o => (o.t || o.n) && (!o._h || o._h >= homNay));
-        ds.sort((a, b) => (b._d || 0) - (a._d || 0));
-        $('f-thongbao').innerHTML = ds.length
-          ? ds.map(o => `<article class="tb"><h3>${esc(o.t || 'Thông báo')}</h3>${o._d ? `<time>${esc(dai(o._d))}</time>` : ''}<p>${lk(o.n || '').replace(/\n/g, '<br>')}</p></article>`).join('')
-          : '<p class="empty">Hiện chưa có thông báo mới.</p>';
-      })();
 
       /* Hình minh hoạ đồng phục (nữ áo dài, nam sơ mi) tô theo màu đã chọn */
       function phucSVG(hex) {
@@ -1702,19 +1560,6 @@ Kem: #EFE3C8
         if (bat) $(b.dataset.dv).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }));
 
-      /* Quỹ hàng quý: chỉ thông tin chung, quý hiện tại tự tính */
-      (function () {
-        const K = { 'mức đóng': 'Mức đóng', 'hạn đóng': 'Hạn đóng', 'cách đóng': 'Cách đóng', 'thủ quỹ': 'Thủ quỹ', 'tổng quỹ': 'Tổng quỹ', 'ghi chú': 'Ghi chú' };
-        const hang = [];
-        $('du-lieu-quy').textContent.split('\n').forEach(dg => {
-          const m = dg.match(/^\s*([^:]{1,20}):\s*(.+)$/);
-          const k = m && K[m[1].trim().toLowerCase()];
-          if (k) hang.push([k, m[2].trim()]);
-        });
-        hang.unshift(['Quý hiện tại', `Quý ${Math.floor(homNay.getMonth() / 3) + 1} · ${homNay.getFullYear()}`]);
-        $('f-quy').innerHTML = `<dl class="qdl">${hang.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${lk(v)}</dd>`).join('')}</dl>`
-          + (hang.length < 2 ? '<p class="empty">Thủ Quỹ sẽ cập nhật mức đóng và hạn đóng của quý này.</p>' : '');
-      })();
     })();
 
     if ('serviceWorker' in navigator) {
